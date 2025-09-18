@@ -1,9 +1,11 @@
-
+import Navbar from "./components/Navbar";
+import HeroSection from"./components/HeroSection";
 
 function index() {
   return (
     <div>
-      <h1>This is our Krishi AI Homepage</h1>
+      <Navbar />
+      <HeroSection />
     </div>
   )
 }
