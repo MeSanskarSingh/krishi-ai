@@ -1,25 +1,86 @@
-const Hero = () => {
+
+
+import Image from 'next/image';
+import Link from 'next/link';
+import styles from '../personalStyles/HeroSection.module.css';
+
+const HeroSection = () => {
   return (
-    <section className="flex flex-col md:flex-row items-center justify-center px-10 py-20 bg-white">
-      <div className="md:w-1/2 max-w-xl">
-        <h1 className="text-5xl font-bold mb-6 text-gray-900 leading-tight">
-          Your Digital Krishi Sathi – <br />
-          Farming made smarter,<br />
-          easier and profitable
-        </h1>
-        <button className="bg-green-600 text-white font-bold px-7 py-3 rounded-full mt-6 flex items-center shadow hover:bg-green-700 transition">
-          LET’S GET STARTED <span className="ml-2">&#8594;</span>
-        </button>
-      </div>
-      <div className="md:w-1/2 flex justify-center mt-12 md:mt-0">
-        <img
-          src="/farmer.png"  // Adjust the path if your image is elsewhere
-          alt="Farmer Illustration"
-          className="h-64 w-auto object-contain"
-        />
-      </div>
-    </section>
+    <div className={styles.wrapper}>
+      <main className={styles.heroSection}>
+        {/* Text Content */}
+        <div className={styles.heroText}>
+          <h1 className={styles.mainHeading}>
+            Your Digital Krishi Sathi – Farming made smarter, easier and profitable
+          </h1>
+          <Link href="/dashboard" className={styles.ctaButton}>
+            LET'S GET STARTED
+            {/* <span className={styles.arrow}>→</span>     */}
+
+          </Link>
+        </div>
+
+        {/* Image Content */}
+        <div className={styles.heroImageContainer}>
+          <Image
+            src="/images/farmer-main.png" // Path from 'public' directory
+            alt="Illustration of a farmer in a field"
+            width={340}
+            height={510}
+            // className={styles.heroImage}
+          />
+        </div>
+      </main>
+
+      <footer className={styles.footer}>
+        <p className={styles.cautionText}>
+          Caution: Predictions are for assistance, not substitutes for expert advice.
+        </p>
+        <div className={styles.footerLinks}>
+          <Link href="/about">About Us</Link>
+          <Link href="/contact">Contact</Link>
+        </div>
+      </footer>
+    </div>
   );
 };
 
-export default Hero;
+export default HeroSection;
+
+
+
+{/* <div><a class="click-btn btn-style901" href="#">Hover me</a></div>
+
+.btn-style901 {
+  $btn-color: #dd7e2a;
+  position: relative;
+  background-color: $btn-color;
+  border-color: $btn-color;
+  color: #fff;
+  overflow: hidden;
+  &::before {
+    width: 25px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "\f054";
+    font-family: "FontAwesome";
+    font-weight: bold;
+    font-size: 10px;
+    color: #fff;
+    text-indent: 5px;
+    border-radius: 0 50% 50% 0;
+    background-color: rgb(223 183 148 / 73%);
+    transform: translate(-20%, 0) scale(0, 1);
+    transform-origin: left center;
+    transition: all 0.25s;
+    z-index: 1;
+  }
+  &:hover {
+    text-indent: 20px;
+    &::before {
+      transform: translate(-20%, 0) scale(1, 1);
+    }
+  }
+} */}

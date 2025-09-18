@@ -1,66 +1,67 @@
-
-
-// const navbar = () => {
-//   return (
-//     <div>
-      
-//     </div>
-//   )
-// }
-
-// // export default navbar;
-// const navbar = () => {
-//   return (
-//     <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px', backgroundColor: '#fff' }}>
-//       <div style={{ display: 'flex', alignItems: 'center' }}>
-//         {/* Placeholder for logo */}
-//         <div style={{ width: 40, height: 40, backgroundColor: '#4CAF50', borderRadius: 8 }}></div>
-//         <span style={{ marginLeft: 10, fontWeight: 'bold', fontSize: 20 }}>Krishi AI</span>
-//       </div>
-
-//       <nav>
-//         <ul style={{ display: 'flex', listStyle: 'none', gap: 20, margin: 0, padding: 0 }}>
-//           <li style={{ cursor: 'pointer' }}>Home</li>
-//           <li style={{ cursor: 'pointer' }}>Features</li>
-//           <li style={{ cursor: 'pointer' }}>Our Mission</li>
-//         </ul>
-//       </nav>
-
-//       <select style={{ padding: '5px 10px', borderRadius: 4, border: '1px solid #ccc' }}>
-//         <option>English</option>
-//         <option>Malyalam</option>
-//       </select>
-//     </header>
-//   );
-// };
-
-// export default navbar;
-
-// "use client";
-// import React from "react";
-import "../personalStyles/Navbar.module.css";
+import Link from 'next/link';
+import Image from 'next/image';
+import { useState } from 'react';
+import styles from '../personalStyles/Navbar.module.css';
 
 const Navbar = () => {
+  // State for the selected language
+  const [selectedLanguage, setSelectedLanguage] = useState('English');
+  
+  // New state to manage if the dropdown is open or closed
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  // This function now accepts the language directly from the list item's click event
+  const handleLanguageChange = (language) => {
+    setSelectedLanguage(language);
+    setDropdownOpen(false); // Close the dropdown after a selection is made
+  };
+
   return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        <img src="../../krishi-ai/main-logo.png" alt="Krishi AI Logo" className="logo" />
-        <span>Krishi AI</span>
-      </div>
-      <ul className="navbar-links">
-        <li>Home</li>
-        <li>Features</li>
-        <li>Our Mission</li>
+    <nav className={styles.navbar}>
+      {/* Logo Section */}
+      <Link href="/" className={styles.logo}>
+        <Image
+          src="/images/main-logo.png"
+          alt="Krishi AI Logo"
+          width={50}
+          height={50}
+        />
+        <span className={styles.logoText}>Krishi AI</span>
+      </Link>
+
+      {/* Navigation Links */}
+      <ul className={styles.navLinks}>
         <li>
-          <select className="lang-dropdown">
-            <option>English</option>
-            <option>Malyalam</option>
-          </select>
+          <Link href="/">Home</Link>
+        </li>
+        <li>
+          <Link href="/features">Features</Link>
+        </li>
+        <li>
+          <Link href="/mission">Our Mission</Link>
         </li>
       </ul>
+
+      {/* Fully Custom and Stylable Language Selector */}
+      <div className={styles.languageSelector}>
+        <button
+          className={styles.languageButton}
+          onClick={() => setDropdownOpen(!isDropdownOpen)} // Toggles the dropdown menu
+        >
+          {selectedLanguage}
+          <span className={`${styles.dropdownIcon} ${isDropdownOpen ? styles.open : ''}`}>▼</span>
+        </button>
+
+        {isDropdownOpen && (
+          <ul className={styles.dropdownMenu}>
+            <li onClick={() => handleLanguageChange('English')}>English</li>
+            <li onClick={() => handleLanguagechange('Malayalam')}>Malayalam</li>
+            {/* <li onClick={() => handleLanguageChange('Hindi')}>Hindi</li> */}
+          </ul>
+        )}
+      </div>
     </nav>
   );
 };
 
 export default Navbar;
-
