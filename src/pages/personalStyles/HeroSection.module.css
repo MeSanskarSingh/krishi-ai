@@ -1,0 +1,166 @@
+/* Wrapper to position footer at the bottom */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 80px); /* Full viewport height minus navbar height (adjust 80px if needed) */
+  background-color: #fdfdfc; /* Same off-white as navbar */
+}
+
+/* Main hero container */
+.heroSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 5%;
+  flex: 1; /* This makes the hero section grow to fill available space, pushing footer down */
+  gap: 2rem;
+}
+
+/* Left side text content */
+.heroText {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mainHeading {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+ /* Call to Action Button */
+/* .ctaButton {
+  background-color: #e6f4e7;
+  border: 1px solid #2e7d32;
+  color: #222;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px; 
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease; 
+ } 
+
+ .ctaButton:hover {
+  background-color: #d1ebd3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.arrow {
+  font-size: 1.5rem;
+  line-height: 1;
+}  */
+
+
+
+/* Right side image */
+.heroImageContainer {
+  max-width: 100%;
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+}
+
+/* Footer Section */
+.footer {
+  background-color: #2e7d32; /* Dark green from the screenshot */
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cautionText {
+  font-size: 0.8rem;
+  color: #e0e0e0;
+  margin: 0;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footerLinks a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: text-decoration 0.2s ease;
+}
+
+.footerLinks a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* ... (keep all your other styles) ... */
+
+/* Call to Action Button - NEW STYLES */
+.ctaButton {
+  /* --- Basic Styling --- */
+  background-color: #e6f4e7; /* Your light green background */
+  border: 1px solid #2e7d32;
+  color: #222;
+  padding: 1.2rem 2.9rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  position: relative; /* Crucial for the pseudo-element */
+  overflow: hidden;   /* Hides the pseudo-element when scaled */
+  transition: text-indent 0.3s ease; /* Animate the text movement */
+}
+
+/* --- The Icon Pseudo-Element --- */
+.ctaButton::before {
+  content: "\f054"; /* Font Awesome right chevron icon */
+  font-family: "Font Awesome 5 Free"; /* Use the correct Font Awesome family */
+  font-weight: 900; /* Required for solid icons in Font Awesome 5 */
+  font-size: 23px;
+  color: #fff;
+  padding-right: 10px;
+  /* Positioning and Shape */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px; /* Width of the icon container */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Style */
+  background-color: rgba(46, 125, 50, 0.8); /* Semi-transparent dark green */
+  border-radius: 0 50% 50% 0; /* Rounded on the right */
+
+  /* --- Initial Animation State (Hidden) --- */
+  transform: scaleX(0);
+  transform-origin: left center; /* Animation grows from the left */
+  transition: transform 0.3s ease;
+}
+
+/* --- Hover State --- */
+.ctaButton:hover {
+  text-indent: 25px; /* Push the text to the right */
+}
+
+.ctaButton:hover::before {
+  transform: scaleX(1); /* Scale the icon container into view */
+}
