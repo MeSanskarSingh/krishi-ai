@@ -55,7 +55,8 @@ const Navbar = () => {
         {isDropdownOpen && (
           <ul className={styles.dropdownMenu}>
             <li onClick={() => handleLanguageChange('English')}>English</li>
-            <li onClick={() => handleLanguagechange('Malayalam')}>Malayalam</li>
+            {/* THIS LINE IS NOW CORRECT */}
+            <li onClick={() => handleLanguageChange('Malayalam')}>Malayalam</li>
             {/* <li onClick={() => handleLanguageChange('Hindi')}>Hindi</li> */}
           </ul>
         )}
