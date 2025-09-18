@@ -1,11 +1,13 @@
+import Navbar from "./components/Navbar";
 
-
-const dashboard = () => {
+const Dashboard = () => {
   return (
     <div>
-      <h1>This is our dashboard</h1>
+      <div className="h-32 w-full bg-slate-500">
+        <h1 className="">This is it</h1>
+      </div>
     </div>
   )
 }
 
-export default dashboard;
+export default Dashboard;
