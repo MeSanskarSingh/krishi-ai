@@ -19,8 +19,9 @@
 
 .logoText {
   font-size: 1.9rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #333;
+  font-family: 'MerriweatherSans';
 }
 
 /* Navigation Links List */
@@ -114,6 +115,7 @@
   width: 160px;
   z-index: 10;
   overflow: hidden;
+  font-family: "MerriweatherSans";
 }
 
 /* The individual option items */

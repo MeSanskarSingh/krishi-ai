@@ -1,4 +1,7 @@
 import { useState } from "react";
+import SendIcon from '@mui/icons-material/Send';
+import Image from "next/image";
+import Navbar from "./components/navbar";
 
 export default function Chatbot() {
   const [messages, setMessages] = useState([]);
@@ -10,7 +13,7 @@ export default function Chatbot() {
     const newMessages = [...messages, { role: "user", content: input }];
     setMessages(newMessages);
 
-    const res = await fetch("http://127.0.0.1:8000/chat", {
+    const res = await fetch("http://127.0.0.1:8080/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: input }),
@@ -23,42 +26,71 @@ export default function Chatbot() {
   };
 
   return (
-    <div style={{ maxWidth: 600, margin: "0 auto", padding: 20 }}>
-      <h2>🌱 Agriculture Chatbot</h2>
-      <div
-        style={{
-          border: "1px solid #ccc",
-          borderRadius: 8,
-          padding: 10,
-          height: 400,
-          overflowY: "auto",
-          marginBottom: 10,
-        }}
-      >
-        {messages.map((msg, i) => (
-          <div
-            key={i}
-            style={{
-              textAlign: msg.role === "user" ? "right" : "left",
-              margin: "5px 0",
-            }}
-          >
-            <b>{msg.role === "user" ? "👨‍🌾 You" : "🤖 Bot"}:</b> {msg.content}
-          </div>
-        ))}
-      </div>
+    
+    <div className="w-full mx-auto p-5 flex flex-col items-center bg-[#FEF7EB] min-h-screen relative border-t-2 border-[#33221E] pt-[100px] pb-0">
+  <h2 className="text-4xl mb-7 text-center font-mitr">
+    <span className="font-thin">Presenting our AI Chatbot, </span>
+    <span className="font-bold">Kisan Mitra</span>
+    <span className="font-thin"> !</span>
+  </h2>
 
-      <div style={{ display: "flex" }}>
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          style={{ flex: 1, padding: 10 }}
-          placeholder="Ask about farming..."
-        />
-        <button onClick={sendMessage} style={{ marginLeft: 10 }}>
-          Send
-        </button>
-      </div>
+  {/* Chatbox stays centered */}
+  <div className="w-[600px] bg-[#3F914824] px-3 py-3 rounded-3xl flex flex-col items-center justify-center mx-auto">
+    <div
+      style={{ padding: 20, height: 400, overflowY: "auto", marginBottom: 10 }}
+      className="w-[600px] rounded-lg"
+    >
+      {messages.map((msg, i) => (
+        <div
+          key={i}
+          className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"} mb-2`}
+        >
+          <div
+            className={`
+              max-w-[75%] px-4 py-2 rounded-2xl shadow-sm
+              ${msg.role === "user"
+                ? "bg-green-200 text-right rounded-br-none"
+                : "bg-slate-100 text-left rounded-bl-none"}
+            `}
+          >
+            <b>{msg.role === "user" ? "👨‍🌾 You" : "🤖 Kisan Mitra"}:</b> {msg.content}
+          </div>
+        </div>
+      ))}
     </div>
+
+    {/* Input Area */}
+    <div className="flex items-center w-full max-w border border-gray-300 rounded-full px-3 py-2 bg-white">
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Ask your query..."
+        className="flex-1 outline-none px-2 text-lg"
+      />
+      <button
+        onClick={sendMessage}
+        className="ml-2 p-2 bg-[#5A3C34] text-white rounded-full hover:bg-[#33221E] transition flex items-center justify-center"
+      >
+        <SendIcon fontSize="small" />
+      </button>
+    </div>
+  </div>
+
+  {/* Farmer image absolutely placed to the right */}
+  <div className="fixed right-10 bottom-[-6px]">
+    <Image 
+      src="/images/farmer-talk.png"
+      height={500}
+      width={350}
+      alt="farmer-talking"
+    />
+  </div>
+
+  {/* Footer Bar */}
+  <div className="bg-[#3F9148] fixed bottom-0 left-0 w-full h-4"></div>
+</div>
+
+
   );
 }

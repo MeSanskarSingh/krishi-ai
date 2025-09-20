@@ -1,23 +1,21 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useRouter } from 'next/router'; // ✅ Import useRouter
 import styles from '../personalStyles/Navbar.module.css';
 
 const Navbar = () => {
-  // State for the selected language
+  const router = useRouter(); // ✅ Get current route
   const [selectedLanguage, setSelectedLanguage] = useState('English');
-  
-  // New state to manage if the dropdown is open or closed
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
-  // This function now accepts the language directly from the list item's click event
   const handleLanguageChange = (language) => {
     setSelectedLanguage(language);
-    setDropdownOpen(false); // Close the dropdown after a selection is made
+    setDropdownOpen(false);
   };
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={`${styles.navbar} fixed top-0 w-full z-50 border-b-2 border-[#5A3C34]`}>
       {/* Logo Section */}
       <Link href="/" className={styles.logo}>
         <Image
@@ -32,21 +30,36 @@ const Navbar = () => {
       {/* Navigation Links */}
       <ul className={styles.navLinks}>
         <li>
-          <Link href="/">Home</Link>
+          <Link 
+            href="/" 
+            className={`font-merritweather ${router.pathname === '/' ? 'text-green-600 border-b-2 border-green-600' : ''}`}
+          >
+            Home
+          </Link>
         </li>
         <li>
-          <Link href="/features">Features</Link>
+          <Link 
+            href="/dashboard" 
+            className={`font-merritweather ${router.pathname === '/dashboard' ? 'text-green-600 border-b-2 border-green-600' : ''}`}
+          >
+            Features
+          </Link>
         </li>
         <li>
-          <Link href="/mission">Our Mission</Link>
+          <Link 
+            href="/mission" 
+            className={`font-merritweather ${router.pathname === '/mission' ? 'text-green-600 border-b-2 border-green-600' : ''}`}
+          >
+            Our Mission
+          </Link>
         </li>
       </ul>
 
-      {/* Fully Custom and Stylable Language Selector */}
+      {/* Language Selector */}
       <div className={styles.languageSelector}>
         <button
           className={styles.languageButton}
-          onClick={() => setDropdownOpen(!isDropdownOpen)} // Toggles the dropdown menu
+          onClick={() => setDropdownOpen(!isDropdownOpen)}
         >
           {selectedLanguage}
           <span className={`${styles.dropdownIcon} ${isDropdownOpen ? styles.open : ''}`}>▼</span>
@@ -55,9 +68,7 @@ const Navbar = () => {
         {isDropdownOpen && (
           <ul className={styles.dropdownMenu}>
             <li onClick={() => handleLanguageChange('English')}>English</li>
-            {/* THIS LINE IS NOW CORRECT */}
             <li onClick={() => handleLanguageChange('Malayalam')}>Malayalam</li>
-            {/* <li onClick={() => handleLanguageChange('Hindi')}>Hindi</li> */}
           </ul>
         )}
       </div>

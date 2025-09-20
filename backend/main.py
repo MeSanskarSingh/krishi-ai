@@ -9,13 +9,12 @@ app = FastAPI()
 # Allow frontend (Next.js) to connect
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],   # In production, restrict to your frontend domain
+    allow_origins=["http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Hugging Face setup
 HF_TOKEN = "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"
 client = InferenceClient("mistralai/Mistral-7B-Instruct-v0.2", token=HF_TOKEN)
 
@@ -25,11 +24,11 @@ class Query(BaseModel):
 def ask_query(question: str) -> str:
     response = client.chat_completion(
         messages=[
-            {"role": "system", "content": "You are a helpful agriculture assistant for farmers."},
+            {"role": "system", "content": "You are a helpful agriculture assistant for farmers. Give us factual answers and no need of lengthy greetings."},
             {"role": "user", "content": question},
         ],
         max_tokens=150,
-        temperature=0.5,
+        temperature=0.2,
     )
     return response.choices[0].message["content"]
 

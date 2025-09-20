@@ -10,7 +10,12 @@ module.exports = {
         greenfooter:"#3F9148",
         background:"#FCF9F6",
         
-      }
+      },
+      fontFamily: {
+        mochiy: ["MochiyPop", "sans-serif"],
+        mitr: ["Mitr", "sans-serif"],
+        merritweather: ["MerriweatherSans", "sans-serif"]
+      },
     },
   },
   plugins: [],
