@@ -106,6 +106,7 @@
   transition: text-indent 0.3s ease; /* Animate the text movement */
   margin-left: 120px;
   font-family: "MochiyPop";
+  letter-spacing: 2px;
 }
 
 /* --- The Icon Pseudo-Element --- */

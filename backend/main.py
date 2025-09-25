@@ -15,7 +15,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-HF_TOKEN = "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"
+HF_TOKEN = "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"
 client = InferenceClient("mistralai/Mistral-7B-Instruct-v0.2", token=HF_TOKEN)
 
 class Query(BaseModel):
