@@ -1,11 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { useRouter } from 'next/router'; // ✅ Import useRouter
+import { useRouter } from 'next/router';
 import styles from '../personalStyles/Navbar.module.css';
+import { useTranslation } from 'next-i18next';
+
+
+
 
 const Navbar = () => {
-  const router = useRouter(); // ✅ Get current route
+  const router = useRouter();
+  const { i18n } = useTranslation();
   const [selectedLanguage, setSelectedLanguage] = useState('English');
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 

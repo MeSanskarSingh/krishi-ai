@@ -11,8 +11,8 @@ const Dashboard = () => {
       <aside className="w-96 bg-[#e2c5a7] h-[calc(100vh-6rem)] fixed top-24 left-0 overflow-y-auto p-4">
         <WeatherCard />
       
-        <div className="bg-white w-80 h-[380px] p-3 mx-auto rounded-3xl font-merritweather">
-          <h3 className="text-red-600 text-center p-3 font-bold text-lg">📢Latest Government Schemes</h3>
+        <div className="bg-white w-80 h-[350px] p-2 mx-auto rounded-3xl font-merritweather">
+          <h3 className="text-red-600 text-center p-2 font-bold text-lg">📢Latest Government Schemes</h3>
           <hr className="border-t-2 border-black mb-2" />
           <h3 className="text-md font-bold text-base">Central</h3>
           <ul className="list-disc list-outside pl-5">
@@ -52,7 +52,7 @@ const Dashboard = () => {
 
     {/* Main Content */}
     <main className="flex-1 ml-96 p-4 bg-[#FEF7EB] min-h-[calc(100vh-6rem)] rounded-tl-3xl">
-      <h1 className="text-3xl tracking-widest pt-2 ml-4 mb-4 font-mochiy text-[#5A3C34]">
+      <h1 className="text-3xl tracking-wide pt-2 ml-4 mb-4 font-mochiy text-[#462f27]">
         What Krishi AI Offers...
       </h1>
 

@@ -1,0 +1,9 @@
+{
+  "chatbot_intro_prefix": "Presenting our AI Chatbot, ",
+  "chatbot_intro_name": "Kisan Mitra",
+  "chatbot_intro_suffix": " !",
+  "chatbot_user": "👨‍🌾 You",
+  "chatbot_name": "🤖 Kisan Mitra",
+  "ask_query_placeholder": "Ask your query...",
+  "chatbot_error": "Sorry, something went wrong!"
+}

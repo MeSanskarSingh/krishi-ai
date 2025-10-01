@@ -24,7 +24,7 @@ class Query(BaseModel):
 def ask_query(question: str) -> str:
     response = client.chat_completion(
         messages=[
-            {"role": "system", "content": "You are a helpful agriculture assistant for farmers. Give us factual answers and no need of lengthy greetings."},
+            {"role": "system", "content": "You are a helpful agriculture assistant for farmers. Give us factual answers and no need of lengthy greetings. Jump straight to solutions."},
             {"role": "user", "content": question},
         ],
         max_tokens=150,
