@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from huggingface_hub import InferenceClient
 from fastapi.middleware.cors import CORSMiddleware
+import os
+
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -9,13 +11,15 @@ app = FastAPI()
 # Allow frontend (Next.js) to connect
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:3000",
+                   "https://krishi-ai-sigma.vercel.app/"
+                   ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-HF_TOKEN = "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"
+HF_TOKEN = os.getenv("HF_TOKEN")
 client = InferenceClient("mistralai/Mistral-7B-Instruct-v0.2", token=HF_TOKEN)
 
 class Query(BaseModel):
