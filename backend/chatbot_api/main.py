@@ -22,6 +22,10 @@ app.add_middleware(
 HF_TOKEN = os.getenv("HF_TOKEN")
 client = InferenceClient("mistralai/Mistral-7B-Instruct-v0.2", token=HF_TOKEN)
 
+port = int(os.environ.get("PORT", 8000))
+app.run(host="0.0.0.0", port=port)
+
+
 class Query(BaseModel):
     message: str
 

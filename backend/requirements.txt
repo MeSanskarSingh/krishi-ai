@@ -7,5 +7,9 @@ joblib
 python-multipart
 huggingface_hub
 tensorflow==2.10.0
-keras==2.10.0  
+keras==2.10.0
 pillow
+pydantic
+pip==24.0
+setuptools==68.2.2
+wheel==0.41.2
