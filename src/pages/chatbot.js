@@ -13,7 +13,7 @@ export default function Chatbot() {
     const newMessages = [...messages, { role: "user", content: input }];
     setMessages(newMessages);
 
-    const res = await fetch("http://127.0.0.1:8080/chat", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_CHATBOT_API}/chat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: input }),
