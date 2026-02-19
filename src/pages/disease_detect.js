@@ -34,7 +34,7 @@ export default function DiseaseDetect() {
 
     try {
       // Call FastAPI backend directly
-      const res = await fetch("http://localhost:7000/predict", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_DISEASE_API}/predict`, {
         method: "POST",
         body: formData,
       });
