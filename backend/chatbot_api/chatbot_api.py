@@ -1,30 +1,35 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from huggingface_hub import InferenceClient
 from fastapi.middleware.cors import CORSMiddleware
 import os
 
-
 # Initialize FastAPI app
-app = FastAPI()
+app = FastAPI(title="Krishi AI Chatbot API")
 
-# Allow frontend (Next.js) to connect
+# CORS configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000",
-                   "https://krishi-ai-sigma.vercel.app/"
-                   ],
+    allow_origins=[
+        "http://localhost:3000",
+        "https://krishi-ai-sigma.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# Load HuggingFace token
 HF_TOKEN = os.getenv("HF_TOKEN")
-client = InferenceClient("mistralai/Mistral-7B-Instruct-v0.2", token=HF_TOKEN)
 
-port = int(os.environ.get("PORT", 8000))
-app.run(host="0.0.0.0", port=port)
+if not HF_TOKEN:
+    raise RuntimeError("HF_TOKEN environment variable not set")
 
+# Initialize client
+client = InferenceClient(
+    model="mistralai/Mistral-7B-Instruct-v0.2",
+    token=HF_TOKEN
+)
 
 class Query(BaseModel):
     message: str
@@ -32,15 +37,29 @@ class Query(BaseModel):
 def ask_query(question: str) -> str:
     response = client.chat_completion(
         messages=[
-            {"role": "system", "content": "You are a helpful agriculture assistant for farmers. Give us factual answers and no need of lengthy greetings. Jump straight to solutions."},
-            {"role": "user", "content": question},
+            {
+                "role": "system",
+                "content": "You are a helpful agriculture assistant for farmers. Give factual answers only. No greetings. Jump straight to solutions."
+            },
+            {
+                "role": "user",
+                "content": question
+            },
         ],
         max_tokens=150,
         temperature=0.2,
     )
-    return response.choices[0].message["content"]
+
+    return response.choices[0].message.content
+
+@app.get("/")
+def root():
+    return {"status": "Chatbot API running"}
 
 @app.post("/chat")
 async def chat(query: Query):
-    answer = ask_query(query.message)
-    return {"response": answer}
+    try:
+        answer = ask_query(query.message)
+        return {"response": answer}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
