@@ -1,97 +1,9 @@
-/* Wrapper to position footer at the bottom */
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  background-color: #FEF7EB; /* Same off-white as navbar */
-  margin-top: 40px;
-}
+/* ===============================
+   CTA BUTTON STYLING ONLY
+   =============================== */
 
-/* Main hero container */
-.heroSection {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem 5%;
-  flex: 1; /* This makes the hero section grow to fill available space, pushing footer down */
-  gap: 2rem;
-}
-
-/* Left side text content */
-.heroText {
-  max-width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.mainHeading {
-  font-size: 3.4rem;
-  font-weight: 700;
-  color: #333;
-  line-height: 1.3;
-  margin-bottom: 2rem;
-  font-family: 'MerriweatherSans';
-  margin-left: 120px;
-  width: 670px;
-}
-
-/* Right side image */
-.heroImageContainer {
-  max-width: 100%;
-  margin-right: 120px;
-  margin-top: 10px;
-}
-
-.heroImage {
-  width: 100%;
-  height: auto;
-}
-
-
-/* Footer Section */
-.footer {
-  background-color: #3F9148; /* Dark green */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 5%;
-  width: 100%;
-  box-sizing: border-box;
-
-  /* Make it stick to bottom */
-  position: fixed;
-  bottom: 0;
-  left: 0;
-
-  /* Ensure it stays above other content */
-  z-index: 50;
-}
-
-.cautionText {
-  font-size: 0.9rem;
-  font-family: 'MerriweatherSans';
-  color: white;
-  margin: 0;
-}
-
-.footerLinks {
-  display: flex;
-  gap: 4rem;
-}
-
-
-.footerLinks a {
-  color: white;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: text-decoration 0.2s ease;
-}
-
-
-/* Call to Action Button - NEW STYLES */
 .ctaButton {
-  /* --- Basic Styling --- */
-  background-color: #e6f4e7; /* Your light green background */
+  background-color: #e6f4e7;
   border: 1px solid #2e7d32;
   color: #222;
   padding: 1.2rem 2.9rem;
@@ -101,47 +13,43 @@
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
-  position: relative; /* Crucial for the pseudo-element */
-  overflow: hidden;   /* Hides the pseudo-element when scaled */
-  transition: text-indent 0.3s ease; /* Animate the text movement */
-  margin-left: 120px;
+  position: relative;
+  overflow: hidden;
+  transition: text-indent 0.3s ease;
   font-family: "MochiyPop";
   letter-spacing: 2px;
 }
 
-/* --- The Icon Pseudo-Element --- */
+/* Icon animation */
 .ctaButton::before {
-  content: "\f054"; /* Font Awesome right chevron icon */
-  font-family: "Font Awesome 5 Free"; /* Use the correct Font Awesome family */
-  font-weight: 900; /* Required for solid icons in Font Awesome 5 */
+  content: "\f054";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   font-size: 23px;
   color: #fff;
-  padding-right: 10px;
-  /* Positioning and Shape */
+
   position: absolute;
   left: 0;
   top: 0;
-  width: 50px; /* Width of the icon container */
+  width: 50px;
   height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  /* Style */
-  background-color: rgba(46, 125, 50, 0.8); /* Semi-transparent dark green */
-  border-radius: 0 50% 50% 0; /* Rounded on the right */
 
-  /* --- Initial Animation State (Hidden) --- */
+  background-color: rgba(46, 125, 50, 0.8);
+  border-radius: 0 50% 50% 0;
+
   transform: scaleX(0);
-  transform-origin: left center; /* Animation grows from the left */
+  transform-origin: left center;
   transition: transform 0.3s ease;
 }
 
-/* --- Hover State --- */
 .ctaButton:hover {
-  text-indent: 25px; /* Push the text to the right */
+  text-indent: 25px;
 }
 
 .ctaButton:hover::before {
-  transform: scaleX(1); /* Scale the icon container into view */
+  transform: scaleX(1);
 }
