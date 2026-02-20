@@ -1,21 +1,24 @@
-🌾 Krishi AI
-Intelligent AI-Powered Agriculture Assistance Platform
+# 🌾 Krishi AI  
+## Intelligent AI-Powered Agriculture Assistance Platform  
 
-Krishi AI is a production-ready AI-driven web application designed to assist farmers with crop management, fertilizer recommendations, disease detection, and agricultural guidance using machine learning and modern web technologies.
+Krishi AI is a **production-ready AI-driven web application** designed to assist farmers with crop management, fertilizer recommendations, disease detection, and agricultural guidance using machine learning and modern web technologies.
 
-The system is deployed using a microservice architecture with independent AI APIs and a cloud-hosted frontend.
+The system follows a **microservice architecture**, with independently deployed AI APIs and a cloud-hosted frontend.
 
-🚀 Live Deployment
+---
 
-🌍 Frontend (Vercel): [Your Vercel URL here]
+## 🚀 Live Deployment
 
-🌿 Fertilizer API: https://fertilizer-api-5dhb.onrender.com
+- 🌍 **Frontend (Vercel):** [Insert Frontend URL]
+- 🌿 **Fertilizer API:** https://fertilizer-api-5dhb.onrender.com
+- 🌱 **Disease Detection API:** [Insert Disease API URL]
+- 🤖 **Chatbot API (Kisan Mitra):** [Insert Chatbot API URL]
 
-🌱 Disease Detection API: [Insert disease API URL]
+---
 
-🤖 Chatbot API (Kisan Mitra): [Insert chatbot API URL]
+## 🏗 System Architecture
 
-🏗 System Architecture
+```text
 User (Browser)
       ↓
 Next.js Frontend (Vercel)
@@ -27,81 +30,69 @@ Next.js Frontend (Vercel)
 -------------------------------------
       ↓
 Machine Learning Models
+```
 
-Krishi AI follows a microservice architecture, where each AI capability is independently deployed and scalable.
+Krishi AI follows a **microservice-based architecture**, allowing each AI component to be independently scalable and maintainable.
 
-🧠 Core Features
-🌾 1. Fertilizer Recommendation System
+---
 
-Random Forest Classifier + Regressor
+## 🧠 Core Features
 
-Predicts optimal fertilizer type
+### 🌾 1. Fertilizer Recommendation System
 
-Predicts required fertilizer quantity (kg/acre)
+- ✔ Random Forest Classifier + Regressor
+- ✔ Predicts optimal fertilizer type
+- ✔ Predicts required fertilizer quantity (kg/acre)
+- ✔ Kerala-specific agricultural dataset
+- ✔ Feature scaling using `StandardScaler`
+- ✔ Encoded categorical agricultural inputs
 
-Kerala-specific dataset
+---
 
-Feature scaling with StandardScaler
+### 🌱 2. Plant Disease Detection
 
-Encoded categorical agricultural inputs
+- ✔ CNN-based image classification model
+- ✔ Detects crop diseases from uploaded leaf images
+- ✔ FastAPI backend with image preprocessing pipeline
 
-🌱 2. Plant Disease Detection
+---
 
-CNN-based image classification model
+### 🤖 3. Kisan Mitra (AI Chatbot)
 
-Detects crop disease from uploaded leaf images
+- ✔ Powered by HuggingFace Inference API
+- ✔ Context-aware agricultural assistant
+- ✔ Provides concise, solution-focused responses
+- ✔ Designed for practical farmer usability
 
-FastAPI backend with image processing
+---
 
-🤖 3. Kisan Mitra (AI Chatbot)
+## 🛠 Tech Stack
 
-Powered by HuggingFace Inference API
+### 🌍 Frontend
 
-Context-aware agricultural assistant
+- Next.js
+- Tailwind CSS
+- Deployed on Vercel
 
-Provides concise, solution-focused answers
+### ⚙ Backend
 
-Designed for farmer usability
+- FastAPI
+- Uvicorn
+- CORS Middleware
+- Environment-based configuration
 
-🛠 Tech Stack
-Frontend
+### 🧠 Machine Learning
 
-Next.js
+- Scikit-learn (Random Forest Models)
+- NumPy
+- Pandas
+- StandardScaler
+- LabelEncoder
+- TensorFlow / Keras (CNN disease model)
 
-Tailwind CSS
+### ☁ Deployment
 
-Deployed on Vercel
-
-Backend
-
-FastAPI
-
-Uvicorn
-
-CORS middleware
-
-Environment-based configuration
-
-Machine Learning
-
-Scikit-learn (Random Forest)
-
-NumPy
-
-Pandas
-
-StandardScaler
-
-LabelEncoder
-
-TensorFlow / Keras (for CNN disease model)
-
-Deployment
-
-Render (Backend APIs)
-
-Vercel (Frontend)
-
-Environment variables for API routing
-
-Version-pinned ML environments for model stability
+- Render (Backend APIs)
+- Vercel (Frontend)
+- Environment variable-based routing
+- Version-pinned ML environments for model stability
