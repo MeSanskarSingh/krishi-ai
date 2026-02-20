@@ -19,7 +19,7 @@ const Fertilizer = () => {
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/predict`,
+        `${process.env.NEXT_PUBLIC_FERTILIZER_API}/predict`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
