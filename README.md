@@ -9,10 +9,10 @@ The system follows a **microservice architecture**, with independently deployed 
 
 ## 🚀 Live Deployment
 
-- 🌍 **Frontend (Vercel):** [Insert Frontend URL]
+- 🌍 **Frontend (Vercel):** https://krishi-ai-sigma.vercel.app/
 - 🌿 **Fertilizer API:** https://fertilizer-api-5dhb.onrender.com
-- 🌱 **Disease Detection API:** [Insert Disease API URL]
-- 🤖 **Chatbot API (Kisan Mitra):** [Insert Chatbot API URL]
+- 🌱 **Disease Detection API:** https://disease-api-osi8.onrender.com
+- 🤖 **Chatbot API (Kisan Mitra):** https://chatbot-api-j4zf.onrender.com
 
 ---
 
