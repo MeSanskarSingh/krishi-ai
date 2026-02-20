@@ -26,71 +26,71 @@ export default function Chatbot() {
   };
 
   return (
-    
-    <div className="w-full mx-auto p-5 flex flex-col items-center bg-[#FEF7EB] min-h-screen relative border-t-2 border-[#33221E] pt-[100px] pb-0">
-  <h2 className="text-4xl mb-7 text-center font-mitr">
-    <span className="font-thin">Presenting our AI Chatbot, </span>
-    <span className="font-bold">Kisan Mitra</span>
-    <span className="font-thin"> !</span>
-  </h2>
+    <div className="min-h-screen bg-[#FEF7EB] pt-24 flex flex-col items-center px-4">
 
-  {/* Chatbox stays centered */}
-  <div className="w-[600px] bg-[#3F914824] px-3 py-3 rounded-3xl flex flex-col items-center justify-center mx-auto">
-    <div
-      style={{ padding: 20, height: 400, overflowY: "auto", marginBottom: 10 }}
-      className="w-[600px] rounded-lg"
-    >
-      {messages.map((msg, i) => (
-        <div
-          key={i}
-          className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"} mb-2`}
-        >
-          <div
-            className={`
-              max-w-[75%] px-4 py-2 rounded-2xl shadow-sm
-              ${msg.role === "user"
-                ? "bg-green-200 text-right rounded-br-none"
-                : "bg-slate-100 text-left rounded-bl-none"}
-            `}
-          >
-            <b>{msg.role === "user" ? "👨‍🌾 You" : "🤖 Kisan Mitra"}:</b> {msg.content}
-          </div>
+      {/* Heading */}
+      <h2 className="text-4xl mb-8 text-center font-mitr">
+        <span className="font-thin">Presenting our AI Chatbot, </span>
+        <span className="font-bold">Kisan Mitra</span>
+        <span className="font-thin"> !</span>
+      </h2>
+
+      {/* Chat Container */}
+      <div className="w-full max-w-2xl bg-white/60 backdrop-blur-sm rounded-3xl shadow-lg flex flex-col overflow-hidden border border-[#3F914830]">
+
+        {/* Messages Area */}
+        <div className="flex-1 overflow-y-auto p-6 space-y-4 h-[450px]">
+
+          {messages.map((msg, i) => (
+            <div
+              key={i}
+              className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+            >
+              <div
+                className={`max-w-[75%] px-4 py-3 rounded-2xl shadow-sm text-sm leading-relaxed
+                  ${msg.role === "user"
+                    ? "bg-[#3F9148] text-white rounded-br-none"
+                    : "bg-gray-100 text-gray-800 rounded-bl-none"}`}
+              >
+                {msg.content}
+              </div>
+            </div>
+          ))}
+
         </div>
-      ))}
+
+        {/* Input Area */}
+        <div className="border-t border-gray-200 p-4 bg-white flex items-center gap-3">
+
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+            placeholder="Ask your farming question..."
+            className="flex-1 outline-none text-base px-4 py-2 rounded-full bg-gray-100 focus:ring-2 focus:ring-[#3F9148] transition"
+          />
+
+          <button
+            onClick={sendMessage}
+            className="p-3 bg-[#5A3C34] text-white rounded-full hover:bg-[#33221E] transition flex items-center justify-center shadow-md"
+          >
+            <SendIcon fontSize="small" />
+          </button>
+
+        </div>
+      </div>
+
+      {/* Farmer Image (Decorative) */}
+      <div className="hidden lg:block fixed right-10 bottom-0">
+        <Image 
+          src="/images/farmer-talk.png"
+          height={420}
+          width={280}
+          alt="farmer-talking"
+        />
+      </div>
+
     </div>
-
-    {/* Input Area */}
-    <div className="flex items-center w-full max-w border border-gray-300 rounded-full px-3 py-2 bg-white">
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Ask your query..."
-        className="flex-1 outline-none px-2 text-lg"
-      />
-      <button
-        onClick={sendMessage}
-        className="ml-2 p-2 bg-[#5A3C34] text-white rounded-full hover:bg-[#33221E] transition flex items-center justify-center"
-      >
-        <SendIcon fontSize="small" />
-      </button>
-    </div>
-  </div>
-
-  {/* Farmer image absolutely placed to the right */}
-  <div className="fixed right-10 bottom-[-6px]">
-    <Image 
-      src="/images/farmer-talk.png"
-      height={500}
-      width={350}
-      alt="farmer-talking"
-    />
-  </div>
-
-  {/* Footer Bar */}
-  <div className="bg-[#3F9148] fixed bottom-0 left-0 w-full h-4"></div>
-</div>
-
-
   );
 }

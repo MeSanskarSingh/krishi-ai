@@ -20,9 +20,7 @@ const Mission = () => {
         </p>
 
         <p className="text-xl text-white mt-6 font-mitr">
-          By combining AI-driven insights with a simple, farmer-friendly
-          interface, we want to bring the benefits of cutting-edge research
-          directly to the fields. Our vision goes beyond solving today’s
+          Our vision goes beyond solving today’s
           challenges—we aspire to build a future where smart farming tools are
           accessible to every farmer, from smallholders in rural villages to
           large-scale cultivators.
