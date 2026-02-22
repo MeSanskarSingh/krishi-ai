@@ -24,7 +24,7 @@ const cardsData = [
   {
     id: 4,
     logo: "/images/market-prices.png",
-    title: "Market Prices",
+    title: "Market Prices (under development)",
     description: "Stay updated with real-time crop and commodity prices.",
     link: "/market_prices"
   }
